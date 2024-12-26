@@ -38,40 +38,41 @@ $(window).on("load", function ()
         {
             var RendaMensal = $('#rendaMensal').val();
             $('#rendaMensalTD').text(TransformarEmReais(RendaMensal));
+            $('#ResultadoRendaMensalTD').html('<i data-toggle="tooltip" data-placement="top" title="Soma de todas as suas receitas, incluindo freelas e rendas extras." class="icon style3 fa-wallet"></i>');
 
             var Euinvisto = $('#euinvisto').val();
             $('#euinvistoTD').text(TransformarEmReais(Euinvisto));
             var ResultadoEuinvistoTD = '';
             if(AnalisarSituacaoFinanceiraInvestimento(RendaMensal,Euinvisto))
-                ResultadoEuinvistoTD = 'Atingiu o investimento mínimo de 20% do salário.'
+                ResultadoEuinvistoTD = '<i data-toggle="tooltip" data-placement="top" title="Atingiu o investimento mínimo de 20% do salário." class="icon style5 fa-thumbs-up"></i>';
             else
-                ResultadoEuinvistoTD = 'Não atingiu o investimento mínimo de 20% do salário.'
-            $('#ResultadoEuinvistoTD').text(ResultadoEuinvistoTD);
+                ResultadoEuinvistoTD = '<i data-toggle="tooltip" data-placement="top" title="Não atingiu o investimento mínimo de 20% do salário." class="icon style1 fa-thumbs-down"></i>'
+            $('#ResultadoEuinvistoTD').html(ResultadoEuinvistoTD);
 
             var Eugasto = $('#eugasto').val();
             $('#eugastoTD').text(TransformarEmReais(Eugasto));
             var ResultadoEugastoTD = '';
             if(AnalisarSituacaoFinanceiraGasto(RendaMensal,Eugasto))
-                ResultadoEugastoTD = 'Você gasta menos do que ganha, parabéns!'
+                ResultadoEugastoTD = '<i data-toggle="tooltip" data-placement="top" title="Você gasta menos do que ganha, parabéns!" class="icon style5 fa-thumbs-up"></i>'
             else
-                ResultadoEugastoTD = 'Você gasta mais do que ganha, alguma coisa não está certa!'
-            $('#ResultadoEugastoTD').text(ResultadoEugastoTD);
+                ResultadoEugastoTD = '<i data-toggle="tooltip" data-placement="top" title="Você gasta mais do que ganha, alguma coisa não está certa!" class="icon style1 fa-thumbs-down"></i>'
+            $('#ResultadoEugastoTD').html(ResultadoEugastoTD);
 
             var Eudevo = $('#eudevo').val();
             $('#eudevoTD').text(TransformarEmReais(Eudevo));
             var ResultadoEudevoTD = '';
             if(AnalisarSituacaoFinanceiraDivida(RendaMensal,Eudevo))
-                ResultadoEudevoTD = 'Show, suas dívidas não comprometem uma parte significativa da sua renda!'
+                ResultadoEudevoTD = '<i data-toggle="tooltip" data-placement="top" title="Show, suas dívidas não comprometem uma parte significativa da sua renda!" class="icon style5 fa-thumbs-up"></i>'
             else
-                ResultadoEudevoTD = 'Preocupante, suas dívidas comprometem mais do que 30% da sua renda!'
-            $('#ResultadoEudevoTD').text(ResultadoEudevoTD);
+                ResultadoEudevoTD = '<i data-toggle="tooltip" data-placement="top" title="Preocupante, suas dívidas comprometem mais do que 30% da sua renda!" class="icon style1 fa-thumbs-down"></i>'
+            $('#ResultadoEudevoTD').html(ResultadoEudevoTD);
 
             var AnaliseSituacaoFinanceira = AnalisarSituacaoFinanceira(RendaMensal,Euinvisto,Eugasto,Eudevo);
             //SituacaoFinanceira
             if(AnaliseSituacaoFinanceira)
-                $('#resultadoSituacaoFinanceira').html("<blockquote>Sua situação financeira atual está boa, parabéns. <br/> Você pode potencializar seus resultados, <br/> veja as dicas de como utilizar o método 70/30!</blockquote>");
+                $('#resultadoSituacaoFinanceira').html("<blockquote><i class='icon style5 fa-thumbs-up'></i> Sua situação financeira atual está boa, parabéns. <br/> Você pode potencializar seus resultados, <br/> veja as dicas de como utilizar o método 70/30!</blockquote>");
             else
-                $('#resultadoSituacaoFinanceira').html("<blockquote>Sua situação financeira atual pode melhorar, <br/>  veja as dicas que vão te ajudar com o método 70/30.</blockquote>");
+                $('#resultadoSituacaoFinanceira').html("<blockquote><i class='icon style1 fa-thumbs-down'></i> Sua situação financeira atual pode melhorar, <br/>  veja as dicas que vão te ajudar com o método 70/30.</blockquote>");
 
             //70/30 macro
             $('#rendaFixaMensal').html("<b>" +  TransformarEmReais(RendaMensalValidar) + "</b>");

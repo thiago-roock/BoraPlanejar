@@ -23,7 +23,7 @@
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://thiago-roock.github.io/BoraPlanejar/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="MétrikaFit" />
+    <meta property="og:title" content="BoraPlanejar" />
     <meta property="og:description" content="Organização financeira fácil e para todos" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:width" content="1200" />
@@ -57,10 +57,10 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li><a id="home" href="#intro" class="active">Análise financeira</a></li>
-							<li><a id="situacaofinanceira" href="#situacaoFinanceira">Resultado análise</a></li>
-							<li><a id="visaomacro" href="#visaoMacro">Reorganização da renda</a></li>
-							<li><a id="visaomicro" href="#visaoMicro">Distribuição da renda</a></li>
+							<li><a id="home" href="#intro" class="active">Análise Financeira</a></li>
+							<li><a id="situacaofinanceira" href="#situacaoFinanceira">Resultado da Análise</a></li>
+							<li><a id="visaomacro" href="#visaoMacro">Reorganização de Renda</a></li>
+							<li><a id="visaomicro" href="#visaoMicro">Distribuição de Renda</a></li>
 							<li><a id="reservaemergencia" href="#reservaEmergencia">Reserva de Emergência</a></li>
 						</ul>
 					</nav>
@@ -114,7 +114,7 @@
 						<!-- situacaoFinanceira -->
 						<section id="situacaoFinanceira" class="main special">
 							<header class="major">
-								<h2>Resultado da sua situação financeira</h2>
+								<h2>Resultado da Análise</h2>
 								<p id="resultadoSituacaoFinanceira"></p>
 										<div class="table-wrapper">
 											<table class="alt">
@@ -127,22 +127,22 @@
 												</thead>
 												<tbody>
 													<tr>
-														<td>Quanto você ganha mensalmente?</td>
+														<td>Eu ganho</td>
 														<td id="rendaMensalTD"></td>
-														<td id="ResultadoRendaMensalTD">Soma de todas as suas receitas, incluindo freelas e rendas extras.</td>
+														<td id="ResultadoRendaMensalTD"></td>
 													</tr>
 													<tr>
-														<td>Quanto você investe todos os meses?</td>
+														<td>Eu invisto</td>
 														<td id="euinvistoTD"></td>
 														<td id="ResultadoEuinvistoTD"></td>
 													</tr>
 													<tr>
-														<td>Quanto você gasta por mês?</td>
+														<td>Eu gasto</td>
 														<td id="eugastoTD"></td>
 														<td id="ResultadoEugastoTD"></td>
 													</tr>
 													<tr>
-														<td>Quanto você deve?</td>
+														<td>Eu devo</td>
 														<td id="eudevoTD"></td>
 														<td id="ResultadoEudevoTD"></td>
 													</tr>
@@ -153,14 +153,14 @@
 							</header>
 							<footer class="major">
 								<ul class="actions special">
-									<li><a href="#visaoMacro" class="button icon solid fas fa-caret-down">Ir para sugestão de reorganização</a></li>
+									<li><a href="#visaoMacro" class="button icon solid fas fa-angle-double-down">Ir para sugestão de reorganização</a></li>
 								</ul>
 							</footer>
 						</section>
 						<!-- First Section -->
 							<section id="visaoMacro" class="main special">
 								<header class="major">
-									<h2>Sugestão para Reorganização da sua renda</h2>
+									<h2>Reorganização de Renda</h2>
 								</header>
 								<ul class="features">
 									<li>
@@ -181,7 +181,7 @@
 								</ul>
 								<footer class="major">
 									<ul class="actions special">
-										<li><a href="#visaoMicro" class="button icon solid fas fa-caret-down">Ir para sugestão de distribuição</a></li>
+										<li><a href="#visaoMicro" class="button icon solid fas fa-angle-double-down">Ir para sugestão de distribuição</a></li>
 									</ul>
 								</footer>
 							</section>
@@ -189,29 +189,27 @@
 						<!-- Second Section -->
 							<section id="visaoMicro" class="main special">
 								<header class="major">
-									<h2>Sugestão para Distribuição da sua renda</h2>
+									<h2>Distribuição de Renda</h2>
 									<p>Receita do sucesso financeiro</p>
 								</header>
 								<ul class="statistics">
-									<li class="style1">
+									<li data-toggle="tooltip" data-placement="top" title="Seu custo de vida atual deve ser compatível com esse valor." class="style1">
 										<span class="icon solid fa-money-bill-alt"></span>
 										<p id="paraoessencial"></p> 55% para o essencial
 									</li>
-									<li class="style2">
+									<li data-toggle="tooltip" data-placement="top" title="Sugestão de ativos: Renda Fixa Tesouro Selic e CDBs rendendo 100% CDI ou mais." class="style2">
 										<span class="icon fas fa-piggy-bank"></span>
 										<p id="parainvestimentos"></p> 20% para investimentos
-										<p>renda fixa Tesouro Selic e CDBs >= 100% CDI </p>
 									</li>
-									<li class="style3">
+									<li data-toggle="tooltip" data-placement="top" title="Sugestão de ativos: Tesouro Renda+" class="style3">
 										<span class="icon solid fa-donate"></span>
 										<p id="paraaponsentadoria"></p> 10% para aposentadoria
-										<p>renda fixa Tesouro Renda+</p>
 									</li>
-									<li class="style4">
+									<li data-toggle="tooltip" data-placement="top" title="Pode utilizar com hobbies, lazer, sem restrições, vai ser feliz!" class="style4">
 										<span class="icon solid fa-gifts"></span>
 										<p id="paragastarcomoquequiser"></p> 10% para gastar com o que quiser
 									</li>
-									<li class="style5">
+									<li data-toggle="tooltip" data-placement="top" title="Sugestão: Livros, Ebooks, Audiolivros, Certificações e Cursos." class="style5">
 										<span class="icon fas fa-graduation-cap"></span>
 										<p id="paraeducacao"></p> 5% para educação
 									</li>
@@ -219,7 +217,7 @@
 								<p class="content">Mudanças de hábitos podem ser desafiadoras no início, mas é importante persistir e insistir. Geralmente, <b>dentro de até 90 dias</b>, sua mente começará a incorporar o novo hábito de forma eficiente na sua rotina. Para manter a motivação ao longo do processo, <b>defina duas recompensas</b> relacionadas aos novos hábitos financeiros: uma para servir de estímulo no <b>meio do caminho</b> e outra como <b>recompensa final</b>, quando esses hábitos estiverem plenamente integrados à sua rotina.</p>
 								<footer class="major">
 									<ul class="actions special">
-										<li><a href="#reservaEmergencia" class="button icon solid fas fa-caret-down">ir para reserva de emergência</a></li>
+										<li><a href="#reservaEmergencia" class="button icon solid fas fa-angle-double-down">ir para reserva de emergência</a></li>
 									</ul>
 								</footer>
 							</section>
@@ -249,7 +247,7 @@
 							<h2>BoraPlanejar</h2>
 							<p>Organização financeira fácil e para todos</p>
 							<ul class="actions">
-								<li><a href="#intro" class="button"><i class="fas fa-caret-up"></i></a></li>
+								<li><a href="#intro" class="button"><i class="fas fa-arrow-up"></i></a></li>
 							</ul>
 						</section>
 						<section>
@@ -274,6 +272,8 @@
 			<script src="./js/breakpoints.min.js"></script>
 			<script src="./js/util.js"></script>
 			<script src="./js/main.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.8"></script>
+			<script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.12"></script>
 			<script src="./js/calculos.js"></script>
 	</body>
 </html>
