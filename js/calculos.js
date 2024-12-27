@@ -2,10 +2,52 @@ $(window).on("load", function ()
 {
     $('#ano').text(new Date().getFullYear());
     $('#rendaMensal').focus();
+    $('#situacaofinanceira').hide();
+
+    var RendaMensal = 0;
+    var Euinvisto = 0;
+    var Eugasto = 0;
+    var Eudevo = 0;
+
+    $('#rendaMensal').blur(function () 
+    {
+        RendaMensal = $('#rendaMensal').val();
+
+        var RendaMensalFormatado = formatMoney(RendaMensal);
+
+        $('#rendaMensal').val(RendaMensalFormatado);
+    });
+
+    $('#euinvisto').blur(function () 
+    {
+        Euinvisto = $('#euinvisto').val();
+
+        var EuinvistoFormatado = formatMoney($('#euinvisto').val());
+
+        $('#euinvisto').val(EuinvistoFormatado);
+    });
+
+    $('#eugasto').blur(function () 
+    {
+        Eugasto = $('#eugasto').val();
+
+        var EugastoFormatado = formatMoney($('#eugasto').val());
+
+        $('#eugasto').val(EugastoFormatado);
+    });
+
+    $('#eudevo').blur(function () 
+    {
+        Eudevo = $('#eudevo').val();
+
+        var EudevoFormatado = formatMoney($('#eudevo').val());
+
+        $('#eudevo').val(EudevoFormatado);
+    });
 
     $('#BotaoVerificarSituacaoFinanceira').click(function () 
     {
-        var RendaMensalValidar = $('#rendaMensal').val().replace(".", "").replace(",", ".");
+        var RendaMensalValidar = RendaMensal.replace(".", "").replace(",", ".");
         var EuinvistoValidar = $('#euinvisto').val().replace(".", "").replace(",", ".");
         var EugastoValidar = $('#eugasto').val().replace(".", "").replace(",", ".");
         var EudevoValidar = $('#eudevo').val().replace(".", "").replace(",", ".");
@@ -36,11 +78,9 @@ $(window).on("load", function ()
         } 
         else 
         {
-            var RendaMensal = $('#rendaMensal').val();
-            $('#rendaMensalTD').text(TransformarEmReais(RendaMensal));
+            $('#rendaMensalTD').text(TransformarEmReais(RendaMensalValidar));
             $('#ResultadoRendaMensalTD').html('<i data-toggle="tooltip" data-placement="top" title="Soma de todas as suas receitas, incluindo freelas e rendas extras." class="icon style3 fa-wallet"></i>');
 
-            var Euinvisto = $('#euinvisto').val();
             $('#euinvistoTD').text(TransformarEmReais(Euinvisto));
             var ResultadoEuinvistoTD = '';
             if(AnalisarSituacaoFinanceiraInvestimento(RendaMensal,Euinvisto))
@@ -49,7 +89,6 @@ $(window).on("load", function ()
                 ResultadoEuinvistoTD = '<i data-toggle="tooltip" data-placement="top" title="Não atingiu o investimento mínimo de 20% do salário." class="icon style1 fa-thumbs-down"></i>'
             $('#ResultadoEuinvistoTD').html(ResultadoEuinvistoTD);
 
-            var Eugasto = $('#eugasto').val();
             $('#eugastoTD').text(TransformarEmReais(Eugasto));
             var ResultadoEugastoTD = '';
             if(AnalisarSituacaoFinanceiraGasto(RendaMensal,Eugasto))
@@ -58,7 +97,6 @@ $(window).on("load", function ()
                 ResultadoEugastoTD = '<i data-toggle="tooltip" data-placement="top" title="Você gasta mais do que ganha, alguma coisa não está certa!" class="icon style1 fa-thumbs-down"></i>'
             $('#ResultadoEugastoTD').html(ResultadoEugastoTD);
 
-            var Eudevo = $('#eudevo').val();
             $('#eudevoTD').text(TransformarEmReais(Eudevo));
             var ResultadoEudevoTD = '';
             if(AnalisarSituacaoFinanceiraDivida(RendaMensal,Eudevo))
@@ -103,7 +141,7 @@ $(window).on("load", function ()
             var clt = true;
             var TotalReservaEmergencia = CalcularReservaEmergencia(RendaFixaMensal55,clt) 
             $('#totalInvestidoReservaEmergencia').html("O valor total investido na sua reserva de emergência deve ser de <b>" + TransformarEmReais(TotalReservaEmergencia)+ "</b> que equivalem a <em> <u>"+(clt ? 6 : 12)+" meses</u> do seu custo de vida.</em> ");
-            $('#sugestaoInvestirParaConcluirReservaEmergencia').html("Sugestão para investir todos os meses <b>" + ParaInvestir+ "</b> no Ativo <i><u>Tesouro SELIC</u> ou <u>CDBs rendendo 100% do CDI</u> com resgate imediato.</i> ");
+            $('#sugestaoInvestirParaConcluirReservaEmergencia').html("Sugestão para investir todos os meses <b>" + ParaInvestir + "</b> no Ativo <i><u>Tesouro SELIC</u> ou <u>CDBs rendendo 100% do CDI</u> com resgate imediato.</i> ");
 
             $('#situacaofinanceira').click();
         }
@@ -203,6 +241,32 @@ $(window).on("load", function ()
 
         return valorFormatado;
     }
+
+    function formatMoney(amount, decimalCount, decimal, thousands) {
+        if (decimalCount == null)
+        {
+            decimalCount = 2;
+        }
+        if (decimal == null){
+            decimal = ".";
+        }
+        if (thousands == null){
+            thousands = ",";
+        }
+        try {
+        decimalCount = Math.abs(decimalCount);
+        decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+    
+        const negativeSign = amount < 0 ? "-" : "";
+    
+        let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+        let j = (i.length > 3) ? i.length % 3 : 0;
+    
+        return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+      } catch (e) {
+        console.log(e)
+      }
+    };
 
 });
 
