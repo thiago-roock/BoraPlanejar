@@ -5,42 +5,63 @@ $(window).on("load", function ()
     $('#situacaofinanceira').hide();
 
     var RendaMensal = 0;
+    var RendaMensalFormatado;
+
     var Euinvisto = 0;
+    var EuinvistoFormatado;
+
     var Eugasto = 0;
+    var EugastoFormatado;
+
     var Eudevo = 0;
+    var EudevoFormatado;
+
 
     $('#rendaMensal').blur(function () 
     {
-        RendaMensal = $('#rendaMensal').val();
+        if ($('#rendaMensal').val() == RendaMensalFormatado)
+            return
 
-        var RendaMensalFormatado = formatMoney(RendaMensal);
+            RendaMensal = $('#rendaMensal').val();
 
-        $('#rendaMensal').val(RendaMensalFormatado);
+            RendaMensalFormatado = formatMoney(RendaMensal);
+
+            $('#rendaMensal').val(RendaMensalFormatado);
+        
     });
 
     $('#euinvisto').blur(function () 
     {
+        if ($('#euinvisto').val() == EuinvistoFormatado)
+            return
+
         Euinvisto = $('#euinvisto').val();
 
-        var EuinvistoFormatado = formatMoney($('#euinvisto').val());
+        EuinvistoFormatado = formatMoney($('#euinvisto').val());
 
         $('#euinvisto').val(EuinvistoFormatado);
     });
 
     $('#eugasto').blur(function () 
     {
+        if ($('#eugasto').val() == EugastoFormatado)
+            return
+
         Eugasto = $('#eugasto').val();
 
-        var EugastoFormatado = formatMoney($('#eugasto').val());
+        EugastoFormatado = formatMoney($('#eugasto').val());
 
         $('#eugasto').val(EugastoFormatado);
     });
 
     $('#eudevo').blur(function () 
     {
+        if ($('#eudevo').val() == EudevoFormatado)
+            return
+
         Eudevo = $('#eudevo').val();
 
-        var EudevoFormatado = formatMoney($('#eudevo').val());
+        EudevoFormatado = formatMoney($('#eudevo').val());
 
         $('#eudevo').val(EudevoFormatado);
     });
